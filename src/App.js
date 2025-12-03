@@ -33,6 +33,7 @@ export default function App() {
   // Links
   const whatsapp1 = "https://wa.me/27698218311";
   const whatsapp2 = "https://wa.me/27714298172";
+  const whatsapp3 ="https://wa.me/27672552824";
   const donateLink = "https://pay.yoco.com/xnetwork"; // Change later
   const facebook = "https://facebook.com/xnetwork";
   const instagram = "https://instagram.com/xnetwork";
@@ -273,7 +274,7 @@ export default function App() {
       >
         <div className="relative mb-8 overflow-hidden rounded-3xl">
           <img
-            src="/images/ronewa.jpg"
+            src="/images/ronewa.jpeg"
             alt="Ronewa — Full-Stack Developer"
             className="w-80 h-80 md:w-96 md:h-96 mx-auto object-cover rounded-3xl shadow-2xl border-4 border-purple-600 transition-all duration-500 group-hover:scale-105 group-hover:border-purple-400"
           />
@@ -329,6 +330,9 @@ export default function App() {
             <a href={whatsapp2} className="block py-6 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl font-bold text-2xl hover:scale-105 transition flex items-center justify-center gap-4">
               <MessageCircle size={40} /> +27 71 429 8172
             </a>
+            <a href={whatsapp3} className="block py-6 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl font-bold text-2xl hover:scale-105 transition flex items-center justify-center gap-4">
+              <MessageCircle size={40} /> +27 67 255 2824
+            </a>
 
             <div className="space-y-6 text-lg">
               <a href="mailto:Ramaanounarine03@gmail.com" className="flex items-center justify-center gap-3 text-purple-400 hover:text-purple-300">
@@ -336,6 +340,9 @@ export default function App() {
               </a>
               <a href="mailto:deandie17@gmail.com" className="flex items-center justify-center gap-3 text-pink-400 hover:text-pink-300">
                 <Mail size={28} /> deandie17@gmail.com
+              </a>
+              <a href="mailto:ronewabradley023@gmail.com" className="flex items-center justify-center gap-3 text-pink-400 hover:text-pink-300">
+                <Mail size={28} /> ronewabradley023@gmail.com
               </a>
             </div>
 
