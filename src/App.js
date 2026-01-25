@@ -1,18 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Menu,
-  X,
-  MessageCircle,
-  Mail,
-  MapPin,
-  CheckCircle,
-  Star,
-  Heart,
-  Facebook,
-  Instagram,
-  Twitter,
-  Linkedin,
+  Menu, X, MessageCircle, Mail, MapPin, CheckCircle,
+  Star, Heart, Facebook, Instagram, Twitter, Linkedin,
+  CreditCard, ShieldCheck, Zap, FileSearch, Gamepad2, GraduationCap,
+  Layout, Code, Smartphone, ShoppingBag, Database, Globe
 } from "lucide-react";
 
 export default function App() {
@@ -24,368 +16,276 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Fixed: Added parentheses around optional chaining
   const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setMenuOpen(false);
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      setMenuOpen(false);
+    }
   };
 
-  // Links
-  const whatsapp1 = "https://wa.me/27698218311";
-  const whatsapp2 = "https://wa.me/27714298172";
-  const whatsapp3 ="https://wa.me/27672552824";
-  const donateLink = "https://pay.yoco.com/xnetwork"; // Change later
-  const facebook = "https://facebook.com/xnetwork";
-  const instagram = "https://instagram.com/xnetwork";
-  const twitter = "https://twitter.com/xnetwork";
-  const linkedin = "https://linkedin.com/company/xnetwork";
+  // --- DATA RECOVERY ---
+  const whatsappMain = "https://wa.me/27698218311";
+  const accountNum = "2305612245";
 
   return (
     <>
-      {/* EPIC INTRO */}
+      {/* 🌪️ CINEMATIC INTRO */}
       <AnimatePresence>
         {!introDone && (
           <motion.div
             initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.4 }}
-            className="fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden"
+            exit={{ opacity: 0, scale: 1.1 }}
+            transition={{ duration: 1 }}
+            className="fixed inset-0 z-[100] bg-black flex items-center justify-center"
           >
-            <motion.div
-              initial={{ scale: 0, rotate: -180, opacity: 0 }}
-              animate={{ scale: 1, rotate: 0, opacity: 1 }}
-              transition={{ duration: 2, type: "spring", stiffness: 90 }}
-              className="text-8xl md:text-9xl font-black tracking-tighter"
+            <motion.div 
+              initial={{ letterSpacing: "-0.5em", opacity: 0 }}
+              animate={{ letterSpacing: "0.2em", opacity: 1 }}
+              transition={{ duration: 2 }}
+              className="text-center"
             >
-              <span className="text-purple-500">X</span>
-              <span className="text-pink-500">NETWORK</span>
+              <h1 className="text-7xl md:text-[10rem] font-black italic tracking-tighter text-white">
+                X<span className="text-pink-600 font-black">NET.</span>
+              </h1>
+              <p className="text-gray-500 font-bold uppercase tracking-[0.5em] text-[10px] mt-4">Pretoria's Digital Foundry</p>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="min-h-screen bg-black text-white">
-        {/* HEADER */}
-        <header className="fixed top-0 z-40 w-full bg-black/90 backdrop-blur-xl border-b border-purple-900/30">
+      <div className="min-h-screen bg-[#050505] text-white selection:bg-pink-500 font-sans">
+        
+        {/* NAV */}
+        <header className="fixed top-0 z-40 w-full bg-black/60 backdrop-blur-2xl border-b border-white/5">
           <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <h1 className="text-4xl font-black bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-              XNETWORK
+            <h1 className="text-3xl font-black italic tracking-tighter cursor-pointer" onClick={() => scrollTo("home")}>
+              X<span className="text-pink-600">N.</span>
             </h1>
-            <nav className="hidden lg:flex gap-10 font-medium text-lg">
-              {["home", "pricing", "services", "team", "testimonials", "contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollTo(item)}
-                  className="hover:text-purple-400 transition capitalize"
-                >
-                  {item === "home" ? "Home" : item}
-                </button>
+            <nav className="hidden lg:flex gap-8 font-black uppercase text-[10px] tracking-widest text-gray-400">
+              {["home", "services", "pricing", "team", "testimonials", "projects", "contact"].map((item) => (
+                <button key={item} onClick={() => scrollTo(item)} className="hover:text-pink-500 transition">{item}</button>
               ))}
             </nav>
-            <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden text-3xl">
-              {menuOpen ? <X /> : <Menu />}
-            </button>
+            <button onClick={() => setMenuOpen(!menuOpen)} className="lg:hidden p-2 bg-white/5 rounded-xl"><Menu /></button>
           </div>
         </header>
 
-        {/* MOBILE MENU */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              className="fixed inset-0 bg-black z-30 pt-28 px-8 text-center"
-            >
-              {["home", "pricing", "services", "team", "testimonials", "contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollTo(item)}
-                  className="block w-full py-6 text-3xl font-bold border-b border-purple-900/50"
-                >
-                  {item.toUpperCase()}
-                </button>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* HERO */}
-        <section id="home" className="pt-32 pb-20 px-6 text-center bg-gradient-to-b from-purple-900/30 to-black">
-          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }}>
-            <h1 className="text-5xl md:text-8xl font-black leading-tight">
-              We build affordable <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Websites </span>
-              <br />
-              From R1000
+        <section id="home" className="pt-64 pb-32 px-6 text-center">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 4.5 }}>
+            <span className="text-pink-500 font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Est. 2024 • Pretoria, South Africa</span>
+            <h1 className="text-7xl md:text-[11rem] font-black leading-[0.8] tracking-tighter italic uppercase">
+              Digital <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">Excellence.</span>
             </h1>
-            <p className="mt-6 text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
-              We serve <strong className="text-purple-400">small businesses</strong> and{" "}
-              <strong className="text-pink-400">big brands</strong> — same quality, same passion.
+            <p className="mt-12 text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto font-bold leading-relaxed italic">
+              Building the next generation of African digital empires. From high-performance websites to complex ecosystem software.
             </p>
-            <div className="mt-12 flex flex-col sm:flex-row gap-6 justify-center">
-              <a
-                href={whatsapp1}
-                className="px-10 py-5 bg-gradient-to-r from-green-500 to-green-600 font-bold text-xl rounded-full hover:scale-105 transition flex items-center justify-center gap-3"
-              >
-                <MessageCircle size={28} /> Chat on WhatsApp
-              </a>
-              <button
-                onClick={() => scrollTo("pricing")}
-                className="px-10 py-5 border-2 border-purple-500 font-bold text-xl rounded-full hover:bg-purple-500/20 transition"
-              >
-                View Pricing
-              </button>
+            <div className="mt-16 flex flex-col md:flex-row justify-center gap-6">
+               <a href={whatsappMain} className="px-14 py-7 bg-pink-600 rounded-2xl font-black italic tracking-widest text-xl hover:bg-white hover:text-black transition-all shadow-2xl shadow-pink-600/20">START YOUR PROJECT</a>
+               <button onClick={() => scrollTo("services")} className="px-14 py-7 border border-white/10 rounded-2xl font-black italic tracking-widest text-xl hover:bg-white/5 transition-all">OUR SERVICES</button>
             </div>
           </motion.div>
         </section>
 
-        {/* PRICING */}
-        <section id="pricing" className="py-24 px-6 bg-gradient-to-b from-black to-purple-900/20">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-5xl md:text-7xl font-black mb-4">Choose Your Level</h2>
-            <p className="text-xl text-gray-400 mb-16">No hidden fees • Fast delivery • Made in Pretoria</p>
-
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {/* BASIC */}
-              <div className="bg-gradient-to-b from-purple-900/40 to-black rounded-3xl p-8 border border-purple-700 hover:border-purple-400 transition">
-                <h3 className="text-3xl font-black text-purple-400">BASIC</h3>
-                <p className="text-6xl font-black my-6">R1000<span className="text-xl text-gray-400">/once</span></p>
-                <ul className="space-y-4 text-lg">
-                  {["Personal/Portfolio Site", "1–5 Pages", "Mobile Friendly", "Contact Form", "Free Domain Help", "Delivery: 3–5 days"].map((f) => (
-                    <li key={f} className="flex items-center gap-3">
-                      <CheckCircle className="text-green-400" /> {f}
-                    </li>
-                  ))}
-                </ul>
-                <a href={whatsapp1} className="block mt-10 py-4 bg-purple-600 rounded-xl font-bold hover:bg-purple-500 transition">
-                  Get This Package
-                </a>
-              </div>
-
-              {/* PRO */}
-              <motion.div className="bg-gradient-to-b from-pink-900/60 to-purple-900/60 rounded-3xl p-8 border-4 border-pink-500 relative shadow-2xl">
-                <div className="absolute top-0 right-0 bg-pink-500 text-black px-6 py-2 font-bold text-sm rounded-bl-2xl">
-                  MOST POPULAR
+        {/* --- SERVICES (DETAILED) --- */}
+        <section id="services" className="py-32 px-6">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-6xl font-black italic tracking-tighter uppercase mb-24">Core <span className="text-pink-600">Capabilities.</span></h2>
+            <div className="grid md:grid-cols-3 gap-10">
+              {[
+                { icon: <Globe />, title: "Web Architecture", desc: "Custom-built websites focused on speed, SEO, and conversion. We don't use boring templates; we build unique digital identities." },
+                { icon: <ShoppingBag />, title: "E-Commerce", desc: "Full-scale online stores with payment gateway integration, stock management, and automated delivery tracking systems." },
+                { icon: <Smartphone />, title: "Mobile Ecosystems", desc: "Native and cross-platform mobile applications for iOS and Android that scale with your business growth." },
+                { icon: <Database />, title: "Custom Software", desc: "Bespoke ERP, CRM, and management systems designed specifically for your company's unique workflow." },
+                { icon: <Layout />, title: "UI/UX Design", desc: "High-end visual design that prioritizes user experience and brand authority. Grayscale to color, liquid animations, and more." },
+                { icon: <ShieldCheck />, title: "Security & Ops", desc: "Rock-solid cloud hosting, database encryption, and ongoing maintenance to keep your platform running 24/7/365." }
+              ].map((s, i) => (
+                <div key={i} className="p-10 bg-white/5 rounded-[3rem] border border-white/5 hover:border-pink-500 transition-all group">
+                  <div className="text-pink-500 mb-6 group-hover:scale-110 transition-transform">{s.icon}</div>
+                  <h3 className="text-2xl font-black italic uppercase mb-4">{s.title}</h3>
+                  <p className="text-gray-400 font-bold text-sm leading-relaxed">{s.desc}</p>
                 </div>
-                <h3 className="text-4xl font-black text-pink-400">PRO</h3>
-                <p className="text-7xl font-black my-6">R5500<span className="text-xl text-gray-400">/once</span></p>
-                <ul className="space-y-4 text-lg">
-                  {["Everything in Basic", "10–20 Pages", "E-commerce Ready", "Admin Dashboard", "SEO Optimized", "1 Year Free Hosting", "Delivery: 2 weeks"].map((f) => (
-                    <li key={f} className="flex items-center gap-3">
-                      <CheckCircle className="text-pink-400" /> {f}
-                    </li>
-                  ))}
-                </ul>
-                <a href={whatsapp1} className="block mt-10 py-4 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl font-bold hover:scale-105 transition">
-                  Get PRO Package
-                </a>
-              </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-              {/* ENTERPRISE */}
-              <div className="bg-gradient-to-b from-purple-900/40 to-black rounded-3xl p-8 border border-purple-700 hover:border-purple-400 transition">
-                <h3 className="text-3xl font-black text-purple-400">ENTERPRISE</h3>
-                <p className="text-5xl font-black my-6">Custom Quote</p>
-                <ul className="space-y-4 text-lg">
-                  {["Mobile App + Website", "Custom Systems", "ERP/CRM", "Payment Gateways", "Ongoing Support", "Team Training"].map((f) => (
-                    <li key={f} className="flex items-center gap-3">
-                      <CheckCircle className="text-green-400" /> {f}
-                    </li>
-                  ))}
+        {/* --- PRICING (RESTORED) --- */}
+        <section id="pricing" className="py-32 px-6 bg-white/[0.01]">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-5xl md:text-7xl font-black italic text-center mb-20 uppercase tracking-tighter">Strategic <span className="text-pink-600">Pricing.</span></h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* BASIC */}
+              <div className="bg-white/5 p-12 rounded-[3.5rem] border border-white/5">
+                <h3 className="text-xl font-black text-purple-400 italic mb-2 tracking-widest">BASIC</h3>
+                <div className="text-6xl font-black mb-8 italic">R1000</div>
+                <ul className="space-y-5 mb-12 text-sm font-bold text-gray-400">
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-green-500"/> 1–5 Premium Pages</li>
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-green-500"/> Fully Mobile Responsive</li>
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-green-500"/> Professional Contact Form</li>
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-green-500"/> Social Media Integration</li>
                 </ul>
-                <a href={whatsapp1} className="block mt-10 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-bold hover:scale-105 transition">
-                  Discuss Project
-                </a>
+                <a href={whatsappMain} className="block w-full py-5 bg-white text-black text-center font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-pink-600 hover:text-white transition-all">CHOOSE BASIC</a>
+              </div>
+              {/* PRO */}
+              <div className="bg-gradient-to-b from-pink-900/40 to-black p-12 rounded-[3.5rem] border-4 border-pink-600 scale-110 relative shadow-2xl shadow-pink-600/20">
+                <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-pink-600 px-6 py-2 rounded-full font-black text-[10px] tracking-widest uppercase">Elite Choice</div>
+                <h3 className="text-xl font-black text-pink-400 italic mb-2 tracking-widest">PRO</h3>
+                <div className="text-6xl font-black mb-8 italic">R5500</div>
+                <ul className="space-y-5 mb-12 text-sm font-bold text-white/80">
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-pink-500"/> Full E-commerce System</li>
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-pink-500"/> Advanced Admin Dashboard</li>
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-pink-500"/> Inventory Management</li>
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-pink-500"/> 1 Year Hosting Included</li>
+                </ul>
+                <a href={whatsappMain} className="block w-full py-5 bg-pink-600 text-white text-center font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-white hover:text-black transition-all">CHOOSE PRO</a>
+              </div>
+              {/* ENTERPRISE */}
+              <div className="bg-white/5 p-12 rounded-[3.5rem] border border-white/5">
+                <h3 className="text-xl font-black text-red-500 italic mb-2 tracking-widest">ENTERPRISE</h3>
+                <div className="text-6xl font-black mb-8 italic">CUSTOM</div>
+                <ul className="space-y-5 mb-12 text-sm font-bold text-gray-400">
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-red-500"/> Mobile App (iOS/Android)</li>
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-red-500"/> ERP/CRM Logic Systems</li>
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-red-500"/> Multi-vendor Marketplace</li>
+                  <li className="flex items-center gap-3"><CheckCircle size={18} className="text-red-500"/> Dedicated Server Setup</li>
+                </ul>
+                <a href={whatsappMain} className="block w-full py-5 bg-white/10 text-white text-center font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-red-600 transition-all">INQUIRE</a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SERVICES, TEAM, TESTIMONIALS — SAME AS BEFORE */}
-        <section id="services" className="py-20 px-6 text-center">
-          <h2 className="text-5xl font-black mb-12">We Also Build</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto text-xl">
-            {["Mobile Apps", "Online Stores", "Admin Dashboards", "School Systems", "Booking Platforms", "Church Websites", "Restaurant Menus", "Custom Software"].map((s) => (
-              <div key={s} className="py-6 border border-purple-800 rounded-2xl hover:bg-purple-900/30 transition">
-                {s}
-              </div>
-            ))}
+        {/* --- TEAM (DETAILED BIOS) --- */}
+        <section id="team" className="py-32 px-6">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-6xl font-black italic tracking-tighter uppercase mb-24">The <span className="text-pink-600">Architects.</span></h2>
+            <div className="grid md:grid-cols-3 gap-16">
+              {[
+                { name: "ENDY MOHLOLA", role: "Founder & Lead Dev", bio: "Diploma in Software Development. Specialist in React, Node.js, and complex system logic.", img: "/images/endy.jpeg" },
+                { name: "UNA RAMS", role: "CEO & Strategist", bio: "Marketing visionary and Forex trading expert. Focused on brand growth and market dominance.", img: "/images/una.jpeg" },
+                { name: "RONEWA", role: "Full-Stack Engineer", bio: "Precision coder specializing in database architecture and secure API integrations.", img: "/images/ronewa.jpeg" }
+              ].map((m, i) => (
+                <div key={i} className="group">
+                  <div className="relative aspect-square rounded-[3.5rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-700 mb-8 border-2 border-transparent group-hover:border-pink-500">
+                    <img src={m.img} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={m.name} />
+                  </div>
+                  <h3 className="text-4xl font-black italic uppercase tracking-tighter mb-2">{m.name}</h3>
+                  <p className="text-pink-500 font-black uppercase tracking-[0.2em] text-xs mb-4">{m.role}</p>
+                  <p className="text-gray-500 font-bold text-sm leading-relaxed">{m.bio}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
-       {/* TEAM — UPGRADED & CLEAN */}
-<section id="team" className="py-32 px-6 bg-gradient-to-b from-purple-900/20 via-black to-black">
-  <div className="max-w-7xl mx-auto text-center">
-    <motion.h2
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="text-5xl md:text-7xl font-black mb-20 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+        {/* --- TESTIMONIALS (NEW) --- */}
+        <section id="testimonials" className="py-32 px-6 bg-white/[0.02]">
+          <div className="max-w-7xl mx-auto text-center">
+            <h2 className="text-5xl font-black italic uppercase mb-20 tracking-tighter">Client <span className="text-pink-500">Words.</span></h2>
+            <div className="grid md:grid-cols-2 gap-10">
+              {[
+                { name: "Sello M.", project: "E-commerce Site", text: "XNETWORK transformed our local shop into a national brand. The Pro package was the best investment we made." },
+                { name: "Lerato K.", project: "Church Website", text: "Professional, fast, and high quality. They understood our vision and delivered a site that truly represents our ministry." }
+              ].map((t, i) => (
+                <div key={i} className="p-12 bg-black border border-white/5 rounded-[3rem] italic text-left relative">
+                  <Star className="text-pink-600 mb-6" fill="currentColor"/>
+                  <p className="text-gray-400 text-lg font-bold mb-8 leading-relaxed">"{t.text}"</p>
+                  <h4 className="text-white font-black uppercase tracking-widest text-sm">{t.name}</h4>
+                  <p className="text-pink-500 text-[10px] font-black uppercase mt-1">{t.project}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* --- PROJECTS & HUB --- */}
+        <section id="projects" className="py-32 px-6">
+          <div className="max-w-7xl mx-auto space-y-32">
+            {/* JITASHOP */}
+<div className="bg-white/5 rounded-[4rem] p-10 md:p-20 border border-white/10 flex flex-col md:flex-row gap-16 items-center">
+  <div className="md:w-1/2">
+    <span className="text-pink-500 font-black uppercase tracking-widest text-xs mb-4 block italic underline decoration-2 underline-offset-8">Featured Live Project</span>
+    <h3 className="text-6xl font-black italic uppercase mb-8 tracking-tighter">JitaShop</h3>
+    <p className="text-gray-400 text-xl font-bold mb-10 italic leading-relaxed">
+      The premier Kasi community marketplace. Connecting thousands of local vendors with a high-performance logistics and admin engine.
+    </p>
+    <a 
+      href="https://jitashopx.vercel.app/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="inline-block px-10 py-5 border-2 border-white/20 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-all"
     >
-      Meet The Team
-    </motion.h2>
+      EXPLORE JITASHOP UI
+    </a>
+  </div>
+  <div className="md:w-1/2 w-full aspect-square bg-zinc-900 rounded-[4rem] border border-white/10 overflow-hidden shadow-inner">
+    {/* REPLACE THE SRC BELOW WITH YOUR ACTUAL IMAGE PATH */}
+    <img 
+      src="/images/mock.png" 
+      alt="JitaShop Interface" 
+      className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500"
+    />
+  </div>
+</div>
 
-    <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
-      {/* ENDY MOHLOLA */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="group"
-      >
-        <div className="relative mb-8 overflow-hidden rounded-3xl">
-          <img
-            src="/images/endy.jpeg"
-            alt="Endy Mohlola — Founder & Lead Developer"
-            className="w-80 h-80 md:w-96 md:h-96 mx-auto object-cover rounded-3xl shadow-2xl border-4 border-purple-600 transition-all duration-500 group-hover:scale-105 group-hover:border-purple-400"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        </div>
-        <h3 className="text-3xl md:text-4xl font-black text-white">ENDY MOHLOLA</h3>
-        <p className="text-purple-400 text-xl mt-2">Founder & Lead Developer</p>
-        <p className="text-gray-400 mt-3 text-lg">3-Year Software Development Diploma<br />Full-Stack Engineer • Visionary</p>
-      </motion.div>
+            {/* GAMING HUB TEASER */}
+            <div className="bg-gradient-to-r from-purple-900/40 via-black to-pink-900/40 p-12 md:p-20 rounded-[4rem] border border-white/10 text-center">
+               <h2 className="text-5xl md:text-8xl font-black italic uppercase tracking-tighter mb-8 italic">X NETWORK <br/> <span className="text-pink-500">GAMING & EDU HUB</span></h2>
+               <p className="text-gray-300 text-xl md:text-2xl font-bold max-w-2xl mx-auto italic mb-12">The largest educational and gaming portal in Africa. Redefining digital learning and competitive play.</p>
+               <div className="inline-block px-12 py-6 bg-white/5 border border-white/10 rounded-3xl font-black italic text-2xl tracking-tighter">COMING MAY 2026</div>
+            </div>
+          </div>
+        </section>
 
-      {/* UNA RAMS */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="group"
-      >
-        <div className="relative mb-8 overflow-hidden rounded-3xl">
-          <img
-            src="/images/una.jpeg"
-            alt="Una Rams — CEO & Business Strategist"
-            className="w-80 h-80 md:w-96 md:h-96 mx-auto object-cover rounded-3xl shadow-2xl border-4 border-pink-600 transition-all duration-500 group-hover:scale-105 group-hover:border-pink-400"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        </div>
-        <h3 className="text-3xl md:text-4xl font-black text-white">UNA RAMS</h3>
-        <p className="text-pink-400 text-xl mt-2">CEO & Business Strategist</p>
-        <p className="text-gray-400 mt-3 text-lg">Supply Chain • Forex Trading • Marketing Genius</p>
-      </motion.div>
-
-      {/* RONEWA */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="group"
-      >
-        <div className="relative mb-8 overflow-hidden rounded-3xl">
-          <img
-            src="/images/ronewa.jpeg"
-            alt="Ronewa — Full-Stack Developer"
-            className="w-80 h-80 md:w-96 md:h-96 mx-auto object-cover rounded-3xl shadow-2xl border-4 border-purple-600 transition-all duration-500 group-hover:scale-105 group-hover:border-purple-400"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-        </div>
-        <h3 className="text-3xl md:text-4xl font-black text-white">RONEWA</h3>
-        <p className="text-purple-400 text-xl mt-2">Full-Stack Developer</p>
-        <p className="text-gray-400 mt-3 text-lg">3-Year Software Development Diploma<br />Code Perfectionist</p>
-      </motion.div>
-    </div>
+        {/* --- THE BIG CV REVIEW (R10) --- */}
+<section id="cv-review" className="py-32 px-6">
+  <div className="max-w-6xl mx-auto bg-gradient-to-br from-zinc-900 to-black p-12 md:p-24 rounded-[5rem] border border-white/10 text-center relative overflow-hidden shadow-2xl">
+    <div className="absolute -bottom-20 -left-20 opacity-5 rotate-12"><FileSearch size={400} /></div>
+    <h2 className="text-6xl md:text-9xl font-black italic tracking-tighter uppercase mb-10">AI CV <br/> REVIEW</h2>
+    <p className="text-gray-400 text-2xl font-bold max-w-xl mx-auto mb-12 italic">Professional scoring. Immediate results. Get the job you deserve.</p>
+    <div className="text-7xl font-black text-pink-500 mb-12 italic">R10.00</div>
+    {/* REPLACE THE HREF BELOW WITH YOUR CV WEBSITE LINK */}
+    <a 
+      href="https://iboy-xnetwork.github.io/cvreview/" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="inline-block px-20 py-8 bg-pink-600 rounded-[2rem] font-black italic tracking-widest text-2xl hover:bg-white hover:text-black transition-all shadow-xl shadow-pink-600/30"
+    >
+      RUN MY CV NOW
+    </a>
   </div>
 </section>
 
-        <section id="testimonials" className="py-24 px-6 bg-gradient-to-b from-black to-purple-900/20">
-          <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-5xl font-black mb-16">What People Say</h2>
-            <div className="grid md:grid-cols-2 gap-10">
-              <div className="bg-purple-900/30 p-10 rounded-3xl">
-                <Star className="text-yellow-400 mx-auto mb-4" fill="currentColor" size={40} />
-                <p className="text-xl italic">"XNETWORK built my salon website for only R1200 — best money I ever spent!"</p>
-                <p className="mt-6 font-bold">— Thandi M., Pretoria</p>
-              </div>
-              <div className="bg-purple-900/30 p-10 rounded-3xl">
-                <Star className="text-yellow-400 mx-auto mb-4" fill="currentColor" size={40} />
-                <p className="text-xl italic">"They delivered my online store in 10 days. Clients are pouring in!"</p>
-                <p className="mt-6 font-bold">— Sipho, Johannesburg</p>
-              </div>
+        {/* --- BANKING --- */}
+        <section className="py-32 px-6">
+          <div className="max-w-4xl mx-auto bg-white/5 border border-white/10 rounded-[4rem] p-16 text-center">
+            <Heart size={64} className="text-red-600 mx-auto mb-10 animate-pulse" />
+            <h2 className="text-5xl font-black italic uppercase tracking-tighter mb-12">Support the Vision</h2>
+            <div className="max-w-sm mx-auto space-y-4">
+               <div className="flex justify-between text-[10px] font-black uppercase text-gray-500 tracking-[0.3em]"><span>Account Number</span> <span className="text-white tracking-widest">{accountNum}</span></div>
+               <div className="flex justify-between text-[10px] font-black uppercase text-gray-500 tracking-[0.3em]"><span>Account Name</span> <span className="text-white">XNETWORK (PTY) LTD</span></div>
+               <div className="flex justify-between text-[10px] font-black uppercase text-gray-500 tracking-[0.3em]"><span>Bank</span> <span className="text-white">CAPITEC BANK</span></div>
             </div>
           </div>
         </section>
 
-        {/* DONATE */}
-        <section className="py-20 px-6 text-center bg-gradient-to-b from-purple-900/30 to-black">
-          <h2 className="text-5xl font-black mb-8">Want to Bless the Team?</h2>
-          <p className="text-xl text-gray-300 mb-10">Every donation helps us support more small businesses</p>
-          <a
-            href={donateLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-red-500 to-pink-500 rounded-full font-bold text-xl hover:scale-110 transition"
-          >
-            <Heart size={32} /> Donate Any Amount
-          </a>
-        </section>
-
-        {/* CONTACT + SOCIALS + MAP */}
-        <section id="contact" className="py-32 px-6 text-center bg-gradient-to-b from-purple-900/30 to-black">
-          <h2 className="text-6xl font-black mb-12">Get In Touch</h2>
-          <div className="max-w-2xl mx-auto space-y-8 text-xl">
-            <a href={whatsapp1} className="block py-6 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl font-bold text-2xl hover:scale-105 transition flex items-center justify-center gap-4">
-              <MessageCircle size={40} /> +27 69 821 8311 (Main)
-            </a>
-            <a href={whatsapp2} className="block py-6 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl font-bold text-2xl hover:scale-105 transition flex items-center justify-center gap-4">
-              <MessageCircle size={40} /> +27 71 429 8172
-            </a>
-            <a href={whatsapp3} className="block py-6 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl font-bold text-2xl hover:scale-105 transition flex items-center justify-center gap-4">
-              <MessageCircle size={40} /> +27 67 255 2824
-            </a>
-
-            <div className="space-y-6 text-lg">
-              <a href="mailto:Ramaanounarine03@gmail.com" className="flex items-center justify-center gap-3 text-purple-400 hover:text-purple-300">
-                <Mail size={28} /> Ramaanounarine03@gmail.com
-              </a>
-              <a href="mailto:deandie17@gmail.com" className="flex items-center justify-center gap-3 text-pink-400 hover:text-pink-300">
-                <Mail size={28} /> deandie17@gmail.com
-              </a>
-              <a href="mailto:ronewabradley023@gmail.com" className="flex items-center justify-center gap-3 text-pink-400 hover:text-pink-300">
-                <Mail size={28} /> ronewabradley023@gmail.com
-              </a>
+        {/* --- CONTACT & FOOTER --- */}
+        <section id="contact" className="py-32 px-6 border-t border-white/5">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-5xl font-black italic uppercase tracking-tighter mb-16 underline decoration-pink-600 underline-offset-[12px]">Get Started</h2>
+            <div className="grid md:grid-cols-2 gap-8 mb-20">
+              <a href={whatsappMain} className="py-10 bg-emerald-600 rounded-3xl font-black italic tracking-widest uppercase text-xl flex items-center justify-center gap-4 hover:scale-105 transition-transform shadow-xl shadow-emerald-600/20"><MessageCircle size={32}/> WhatsApp Main</a>
+              <a href="mailto:Ramaanounarine03@gmail.com" className="py-10 bg-white/5 border border-white/10 rounded-3xl font-black italic tracking-widest uppercase text-xl flex items-center justify-center gap-4 hover:bg-white/10 transition-colors"><Mail size={32}/> Official Email</a>
             </div>
-
-            {/* SOCIAL MEDIA */}
-            <div className="flex justify-center gap-8 mt-10">
-              <a href={facebook} target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition">
-                <Facebook size={36} />
-              </a>
-              <a href={instagram} target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 transition">
-                <Instagram size={36} />
-              </a>
-              <a href={twitter} target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition">
-                <Twitter size={36} />
-              </a>
-              <a href={linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition">
-                <Linkedin size={36} />
-              </a>
+            <div className="flex justify-center gap-10 text-gray-600 mb-20">
+              <Facebook size={24}/> <Instagram size={24}/> <Twitter size={24}/> <Linkedin size={24}/>
             </div>
-
-            {/* MAP */}
-            <div className="mt-16">
-              <div className="flex items-center justify-center gap-3 text-2xl font-bold mb-6">
-                <MapPin size={40} className="text-purple-400" /> Pretoria, South Africa
-              </div>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28732.93458120898!2d28.1879!3d-25.7479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9561b000000001%3A0xafe65d1b7bf4c5e!2sPretoria!5e0!3m2!1sen!2sza!4v1234567890"
-                width="100%"
-                height="400"
-                className="rounded-3xl border-4 border-purple-700"
-                loading="lazy"
-                title="XNETWORK Location"
-              ></iframe>
-            </div>
+            <p className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-800 italic">XNETWORK DIGITAL PRETORIA © 2026</p>
           </div>
         </section>
 
-        {/* FOOTER */}
-        <footer className="py-12 text-center border-t border-purple-900/50">
-          <p className="text-4xl font-black bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-            XNETWORK
-          </p>
-          <p className="text-gray-400 mt-4">© 2025 • Pretoria • From R1000 • Small & Big Brands Welcome</p>
-        </footer>
       </div>
     </>
   );

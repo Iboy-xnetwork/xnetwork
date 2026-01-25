@@ -1,0 +1,5 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="6" fill="black"/>
+  <text x="4" y="22" fill="white" style="font-family: sans-serif; font-weight: 900; font-style: italic; font-size: 16px;">X</text>
+  <text x="16" y="22" fill="#db2777" style="font-family: sans-serif; font-weight: 900; font-style: italic; font-size: 16px;">N</text>
+</svg>
