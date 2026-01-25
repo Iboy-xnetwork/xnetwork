@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Menu, X, MessageCircle, Mail, MapPin, CheckCircle,
+  Menu, MessageCircle, Mail, CheckCircle,
   Star, Heart, Facebook, Instagram, Twitter, Linkedin,
-  CreditCard, ShieldCheck, Zap, FileSearch, Gamepad2, GraduationCap,
-  Layout, Code, Smartphone, ShoppingBag, Database, Globe
+ ShieldCheck,FileSearch,
+  Layout, Smartphone, ShoppingBag, Database, Globe
 } from "lucide-react";
 
 export default function App() {
