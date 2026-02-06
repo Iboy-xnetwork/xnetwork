@@ -3,8 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Menu, MessageCircle, Mail, CheckCircle,
   Star, Heart, Facebook, Instagram, Twitter, Linkedin,
- ShieldCheck,FileSearch,
-  Layout, Smartphone, ShoppingBag, Database, Globe
+  Globe, ShoppingBag, Smartphone, Database, Layout, ShieldCheck
 } from "lucide-react";
 
 export default function App() {
@@ -24,13 +23,13 @@ export default function App() {
     }
   };
 
-  // --- DATA RECOVERY ---
+  // --- DATA ---
   const whatsappMain = "https://wa.me/27698218311";
   const accountNum = "2305612245";
 
   return (
     <>
-      {/* 🌪️ CINEMATIC INTRO */}
+      {/* CINEMATIC INTRO */}
       <AnimatePresence>
         {!introDone && (
           <motion.div
@@ -82,24 +81,24 @@ export default function App() {
               Building the next generation of African digital empires. From high-performance websites to complex ecosystem software.
             </p>
             <div className="mt-16 flex flex-col md:flex-row justify-center gap-6">
-               <a href={whatsappMain} className="px-14 py-7 bg-pink-600 rounded-2xl font-black italic tracking-widest text-xl hover:bg-white hover:text-black transition-all shadow-2xl shadow-pink-600/20">START YOUR PROJECT</a>
-               <button onClick={() => scrollTo("services")} className="px-14 py-7 border border-white/10 rounded-2xl font-black italic tracking-widest text-xl hover:bg-white/5 transition-all">OUR SERVICES</button>
+              <a href={whatsappMain} className="px-14 py-7 bg-pink-600 rounded-2xl font-black italic tracking-widest text-xl hover:bg-white hover:text-black transition-all shadow-2xl shadow-pink-600/20">START YOUR PROJECT</a>
+              <button onClick={() => scrollTo("services")} className="px-14 py-7 border border-white/10 rounded-2xl font-black italic tracking-widest text-xl hover:bg-white/5 transition-all">OUR SERVICES</button>
             </div>
           </motion.div>
         </section>
 
-        {/* --- SERVICES (DETAILED) --- */}
+        {/* SERVICES */}
         <section id="services" className="py-32 px-6">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-6xl font-black italic tracking-tighter uppercase mb-24">Core <span className="text-pink-600">Capabilities.</span></h2>
             <div className="grid md:grid-cols-3 gap-10">
               {[
-                { icon: <Globe />, title: "Web Architecture", desc: "Custom-built websites focused on speed, SEO, and conversion. We don't use boring templates; we build unique digital identities." },
-                { icon: <ShoppingBag />, title: "E-Commerce", desc: "Full-scale online stores with payment gateway integration, stock management, and automated delivery tracking systems." },
-                { icon: <Smartphone />, title: "Mobile Ecosystems", desc: "Native and cross-platform mobile applications for iOS and Android that scale with your business growth." },
-                { icon: <Database />, title: "Custom Software", desc: "Bespoke ERP, CRM, and management systems designed specifically for your company's unique workflow." },
-                { icon: <Layout />, title: "UI/UX Design", desc: "High-end visual design that prioritizes user experience and brand authority. Grayscale to color, liquid animations, and more." },
-                { icon: <ShieldCheck />, title: "Security & Ops", desc: "Rock-solid cloud hosting, database encryption, and ongoing maintenance to keep your platform running 24/7/365." }
+                { icon: <Globe />, title: "Web Architecture", desc: "Custom-built websites focused on speed, SEO, and conversion." },
+                { icon: <ShoppingBag />, title: "E-Commerce", desc: "Full-scale online stores with payments, stock & tracking systems." },
+                { icon: <Smartphone />, title: "Mobile Ecosystems", desc: "Native/cross-platform apps for iOS & Android." },
+                { icon: <Database />, title: "Custom Software", desc: "Bespoke ERP, CRM, and workflow systems." },
+                { icon: <Layout />, title: "UI/UX Design", desc: "High-end design with animations and brand focus." },
+                { icon: <ShieldCheck />, title: "Security & Ops", desc: "Secure hosting, encryption, 24/7 maintenance." }
               ].map((s, i) => (
                 <div key={i} className="p-10 bg-white/5 rounded-[3rem] border border-white/5 hover:border-pink-500 transition-all group">
                   <div className="text-pink-500 mb-6 group-hover:scale-110 transition-transform">{s.icon}</div>
@@ -111,7 +110,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* --- PRICING (RESTORED) --- */}
+        {/* PRICING */}
         <section id="pricing" className="py-32 px-6 bg-white/[0.01]">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-5xl md:text-7xl font-black italic text-center mb-20 uppercase tracking-tighter">Strategic <span className="text-pink-600">Pricing.</span></h2>
@@ -157,14 +156,14 @@ export default function App() {
           </div>
         </section>
 
-        {/* --- TEAM (DETAILED BIOS) --- */}
+        {/* TEAM */}
         <section id="team" className="py-32 px-6">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-6xl font-black italic tracking-tighter uppercase mb-24">The <span className="text-pink-600">Architects.</span></h2>
             <div className="grid md:grid-cols-3 gap-16">
               {[
                 { name: "ENDY MOHLOLA", role: "Founder & Lead Dev", bio: "Diploma in Software Development. Specialist in React, Node.js, and complex system logic.", img: "/images/endy.jpeg" },
-                { name: "UNA RAMS", role: "CEO & Strategist", bio: "Marketing visionary and Forex trading expert. Focused on brand growth and market dominance.", img: "/images/una.jpeg" },
+                { name: "UNA RAMS", role: "CEO & Strategist", bio: "Marketing visionary and Forex trading expert.", img: "/images/una.jpeg" },
                 { name: "RONEWA", role: "Full-Stack Engineer", bio: "Precision coder specializing in database architecture and secure API integrations.", img: "/images/ronewa.jpeg" }
               ].map((m, i) => (
                 <div key={i} className="group">
@@ -180,7 +179,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* --- TESTIMONIALS (NEW) --- */}
+        {/* TESTIMONIALS */}
         <section id="testimonials" className="py-32 px-6 bg-white/[0.02]">
           <div className="max-w-7xl mx-auto text-center">
             <h2 className="text-5xl font-black italic uppercase mb-20 tracking-tighter">Client <span className="text-pink-500">Words.</span></h2>
@@ -200,78 +199,52 @@ export default function App() {
           </div>
         </section>
 
-        {/* --- PROJECTS & HUB --- */}
+        {/* PROJECTS — only JitaShop now */}
         <section id="projects" className="py-32 px-6">
-          <div className="max-w-7xl mx-auto space-y-32">
-            {/* JITASHOP */}
-<div className="bg-white/5 rounded-[4rem] p-10 md:p-20 border border-white/10 flex flex-col md:flex-row gap-16 items-center">
-  <div className="md:w-1/2">
-    <span className="text-pink-500 font-black uppercase tracking-widest text-xs mb-4 block italic underline decoration-2 underline-offset-8">Featured Live Project</span>
-    <h3 className="text-6xl font-black italic uppercase mb-8 tracking-tighter">JitaShop</h3>
-    <p className="text-gray-400 text-xl font-bold mb-10 italic leading-relaxed">
-      The premier Kasi community marketplace. Connecting thousands of local vendors with a high-performance logistics and admin engine.
-    </p>
-    <a 
-      href="https://jitashopx.vercel.app/" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="inline-block px-10 py-5 border-2 border-white/20 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-all"
-    >
-      EXPLORE JITASHOP UI
-    </a>
-  </div>
-  <div className="md:w-1/2 w-full aspect-square bg-zinc-900 rounded-[4rem] border border-white/10 overflow-hidden shadow-inner">
-    {/* REPLACE THE SRC BELOW WITH YOUR ACTUAL IMAGE PATH */}
-    <img 
-      src="/images/mock.png" 
-      alt="JitaShop Interface" 
-      className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500"
-    />
-  </div>
-</div>
-
-            {/* GAMING HUB TEASER */}
-            <div className="bg-gradient-to-r from-purple-900/40 via-black to-pink-900/40 p-12 md:p-20 rounded-[4rem] border border-white/10 text-center">
-               <h2 className="text-5xl md:text-8xl font-black italic uppercase tracking-tighter mb-8 italic">X NETWORK <br/> <span className="text-pink-500">GAMING & EDU HUB</span></h2>
-               <p className="text-gray-300 text-xl md:text-2xl font-bold max-w-2xl mx-auto italic mb-12">The largest educational and gaming portal in Africa. Redefining digital learning and competitive play.</p>
-               <div className="inline-block px-12 py-6 bg-white/5 border border-white/10 rounded-3xl font-black italic text-2xl tracking-tighter">COMING MAY 2026</div>
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-6xl font-black italic tracking-tighter uppercase mb-24 text-center">Featured <span className="text-pink-600">Project</span></h2>
+            
+            <div className="bg-white/5 rounded-[4rem] p-10 md:p-20 border border-white/10 flex flex-col md:flex-row gap-16 items-center mt-16">
+              <div className="md:w-1/2">
+                <span className="text-pink-500 font-black uppercase tracking-widest text-xs mb-4 block italic underline decoration-2 underline-offset-8">Live Project</span>
+                <h3 className="text-6xl font-black italic uppercase mb-8 tracking-tighter">JitaShop</h3>
+                <p className="text-gray-400 text-xl font-bold mb-10 italic leading-relaxed">
+                  The premier Kasi community marketplace. Connecting thousands of local vendors with a high-performance logistics and admin engine.
+                </p>
+                <a 
+                  href="https://jitashopx.vercel.app/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block px-10 py-5 border-2 border-white/20 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-all"
+                >
+                  EXPLORE JITASHOP
+                </a>
+              </div>
+              <div className="md:w-1/2 w-full aspect-square bg-zinc-900 rounded-[4rem] border border-white/10 overflow-hidden shadow-inner">
+                <img 
+                  src="/images/mock.png" 
+                  alt="JitaShop Interface" 
+                  className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500"
+                />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* --- THE BIG CV REVIEW (R10) --- */}
-<section id="cv-review" className="py-32 px-6">
-  <div className="max-w-6xl mx-auto bg-gradient-to-br from-zinc-900 to-black p-12 md:p-24 rounded-[5rem] border border-white/10 text-center relative overflow-hidden shadow-2xl">
-    <div className="absolute -bottom-20 -left-20 opacity-5 rotate-12"><FileSearch size={400} /></div>
-    <h2 className="text-6xl md:text-9xl font-black italic tracking-tighter uppercase mb-10">AI CV <br/> REVIEW</h2>
-    <p className="text-gray-400 text-2xl font-bold max-w-xl mx-auto mb-12 italic">Professional scoring. Immediate results. Get the job you deserve.</p>
-    <div className="text-7xl font-black text-pink-500 mb-12 italic">R10.00</div>
-    {/* REPLACE THE HREF BELOW WITH YOUR CV WEBSITE LINK */}
-    <a 
-      href="https://iboy-xnetwork.github.io/cvreview/" 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="inline-block px-20 py-8 bg-pink-600 rounded-[2rem] font-black italic tracking-widest text-2xl hover:bg-white hover:text-black transition-all shadow-xl shadow-pink-600/30"
-    >
-      RUN MY CV NOW
-    </a>
-  </div>
-</section>
-
-        {/* --- BANKING --- */}
+        {/* BANKING SUPPORT */}
         <section className="py-32 px-6">
           <div className="max-w-4xl mx-auto bg-white/5 border border-white/10 rounded-[4rem] p-16 text-center">
             <Heart size={64} className="text-red-600 mx-auto mb-10 animate-pulse" />
             <h2 className="text-5xl font-black italic uppercase tracking-tighter mb-12">Support the Vision</h2>
             <div className="max-w-sm mx-auto space-y-4">
-               <div className="flex justify-between text-[10px] font-black uppercase text-gray-500 tracking-[0.3em]"><span>Account Number</span> <span className="text-white tracking-widest">{accountNum}</span></div>
-               <div className="flex justify-between text-[10px] font-black uppercase text-gray-500 tracking-[0.3em]"><span>Account Name</span> <span className="text-white">XNETWORK (PTY) LTD</span></div>
-               <div className="flex justify-between text-[10px] font-black uppercase text-gray-500 tracking-[0.3em]"><span>Bank</span> <span className="text-white">CAPITEC BANK</span></div>
+              <div className="flex justify-between text-[10px] font-black uppercase text-gray-500 tracking-[0.3em]"><span>Account Number</span> <span className="text-white tracking-widest">{accountNum}</span></div>
+              <div className="flex justify-between text-[10px] font-black uppercase text-gray-500 tracking-[0.3em]"><span>Account Name</span> <span className="text-white">XNETWORK (PTY) LTD</span></div>
+              <div className="flex justify-between text-[10px] font-black uppercase text-gray-500 tracking-[0.3em]"><span>Bank</span> <span className="text-white">CAPITEC BANK</span></div>
             </div>
           </div>
         </section>
 
-        {/* --- CONTACT & FOOTER --- */}
+        {/* CONTACT & FOOTER */}
         <section id="contact" className="py-32 px-6 border-t border-white/5">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-5xl font-black italic uppercase tracking-tighter mb-16 underline decoration-pink-600 underline-offset-[12px]">Get Started</h2>
